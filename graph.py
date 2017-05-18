@@ -14,35 +14,38 @@ def count_triangles(matrix):
     diagonal = numpy.diagonal(cubed)
     print "diagonal"
     print diagonal
-    sum = numpy.sum(diagonal)
-    print "sum", sum
-    return sum/6
+    diagonal_sum = numpy.sum(diagonal)
+    print "diagonal sum", diagonal_sum
+    return diagonal_sum/6
+
 
 # Recursively generate edges for a tree graph
 # width describes the number of branches to create at each node. width is n where the desired tree is an n tree
 # depth the number of recursions to perform. Depth levels of tree will be generated from the first node.
-def tree(width, depth, root=1, nodeIndex=1):
+def tree(width, depth, root=1, node_index=1):
     layer = []
     if depth is 0:
         return []
     for i in range(root, root+width):
-        nodeIndex+=1
-        node = nodeIndex
+        node_index+=1
+        node = node_index
 
         layer.append((root, node, 1))
-        subLayer=tree(width, depth-1,root=node,nodeIndex=node)
-        layer += subLayer
-        nodeIndex += len(subLayer)
+        sub_layer=tree(width, depth-1,root=node,node_index=node)
+        layer += sub_layer
+        node_index += len(sub_layer)
 
     return layer
 
+
 # Wrap the result of tree() in a networkx Graph
-def treex(width, depth, nodeIndex=1):
+def treex(width, depth, node_index=1):
     G=nx.Graph()
-    G.add_weighted_edges_from(tree(width,depth,nodeIndex))
+    G.add_weighted_edges_from(tree(width,depth,node_index))
     return G
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     # Generate a tree of width 3 with a depth of 1
     G = treex(3,1)
 
