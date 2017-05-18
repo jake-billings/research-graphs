@@ -6,7 +6,8 @@ HEIGHT = 480
 ROW_HEIGHT = 64
 CENTER = WIDTH / 2
 NODE_WIDTH = 32
-SAME_LAYER_VERTICAL_OFFSET = 24
+SAME_LAYER_VERTICAL_OFFSET = 20
+SAME_LAYER_HORIZONTAL_OFFSET = 6
 
 # Quick and dirty Tkinter function to visualize tree-like graphs from networkx
 # Layers are determined using the shortest path to the root node
@@ -47,9 +48,9 @@ def draw_network(G, root=1):
             # Draw an arc when nodes are on the same layer
             a = nodeCoordinates[edge[0]]
             b = nodeCoordinates[edge[1]]
-            w.create_line(a[0], a[1], a[0], a[1]+SAME_LAYER_VERTICAL_OFFSET)
-            w.create_line(b[0], b[1], b[0], b[1]+SAME_LAYER_VERTICAL_OFFSET)
-            w.create_line(a[0], a[1]+SAME_LAYER_VERTICAL_OFFSET, b[0], b[1]+SAME_LAYER_VERTICAL_OFFSET)
+            w.create_line(a[0], a[1], a[0]+SAME_LAYER_HORIZONTAL_OFFSET, a[1]+SAME_LAYER_VERTICAL_OFFSET)
+            w.create_line(b[0], b[1], b[0]-SAME_LAYER_HORIZONTAL_OFFSET, b[1]+SAME_LAYER_VERTICAL_OFFSET)
+            w.create_line(a[0]+SAME_LAYER_HORIZONTAL_OFFSET, a[1]+SAME_LAYER_VERTICAL_OFFSET, b[0]-SAME_LAYER_HORIZONTAL_OFFSET, b[1]+SAME_LAYER_VERTICAL_OFFSET)
         else:
             # Draw a straight line when nodes are on different layers
             a = nodeCoordinates[edge[0]]
