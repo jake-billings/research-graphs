@@ -9,6 +9,7 @@ NODE_WIDTH = 32
 SAME_LAYER_VERTICAL_OFFSET = 20
 SAME_LAYER_HORIZONTAL_OFFSET = 6
 
+
 # Quick and dirty Tkinter function to visualize tree-like graphs from networkx
 # Layers are determined using the shortest path to the root node
 def draw_network(G, root=1):
