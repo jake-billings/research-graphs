@@ -18,6 +18,21 @@ def count_triangles(matrix):
     print "diagonal sum", diagonal_sum
     return diagonal_sum/6
 
+# Count the edges in an adjacency matrix
+# Source: Lesson in Math class
+def count_edges(matrix):
+    print "matrix"
+    print matrix
+    squared = numpy.dot(matrix, matrix)
+    print "squared"
+    print squared
+    diagonal = numpy.diagonal(squared)
+    print "diagonal"
+    print diagonal
+    diagonal_sum = numpy.sum(diagonal)
+    print "diagonal sum", diagonal_sum
+    return diagonal_sum/2
+
 
 # Recursively generate edges for a tree graph
 # width describes the number of branches to create at each node. width is n where the desired tree is an n tree
@@ -47,7 +62,7 @@ def treex(width, depth, node_index=1):
 
 if __name__ == "__main__":
     # Generate a tree of width 3 with a depth of 1
-    G = treex(3,1)
+    G = treex(4,2)
 
     # Count the triangles and print the edges (there should be 0 triangles)
     print count_triangles(nx.to_numpy_matrix(G)), "triangles in a basic tree graph:"
