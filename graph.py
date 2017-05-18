@@ -3,6 +3,7 @@ import networkx as nx
 import gui
 
 # Count the triangles in an adjacency matrix
+# See: https://en.wikipedia.org/wiki/Adjacency_matrix#Matrix_powers
 def count_triangles(matrix):
     print "matrix"
     print matrix
