@@ -2,36 +2,71 @@ import numpy
 import networkx as nx
 import gui
 
-# Count the triangles in an adjacency matrix
-# See: https://en.wikipedia.org/wiki/Adjacency_matrix#Matrix_powers
-def count_triangles(matrix):
-    print "matrix"
-    print matrix
-    squared = numpy.dot(matrix, matrix)
-    cubed = numpy.dot(squared, matrix)
-    print "cubed"
-    print cubed
-    diagonal = numpy.diagonal(cubed)
-    print "diagonal"
-    print diagonal
-    diagonal_sum = numpy.sum(diagonal)
-    print "diagonal sum", diagonal_sum
-    return diagonal_sum/6
 
 # Count the edges in an adjacency matrix
 # Source: Lesson in Math class
 def count_edges(matrix):
-    print "matrix"
-    print matrix
     squared = numpy.dot(matrix, matrix)
-    print "squared"
-    print squared
     diagonal = numpy.diagonal(squared)
-    print "diagonal"
-    print diagonal
     diagonal_sum = numpy.sum(diagonal)
-    print "diagonal sum", diagonal_sum
     return diagonal_sum/2
+
+
+# Count the triangles in an adjacency matrix
+# See: https://en.wikipedia.org/wiki/Adjacency_matrix#Matrix_powers
+def count_triangles(matrix):
+    squared = numpy.dot(matrix, matrix)
+    cubed = numpy.dot(squared, matrix)
+    diagonal = numpy.diagonal(cubed)
+    diagonal_sum = numpy.sum(diagonal)
+    return diagonal_sum/6
+
+
+# Test for triangles in an adjacency matrix
+def test_triangles(matrix):
+    return count_triangles(matrix) > 0
+
+
+# Test for triangles in an adjacency matrix
+def test_quads(matrix):
+    squared = numpy.dot(matrix, matrix)
+
+    for i in range(1,len(squared)-1):
+        for j in (i+1,len(squared[i])-1):
+            if squared[i, j] > 1:
+                return True
+
+    return False
+
+
+# Test for hexes in an adjacency matrix
+def test_hexes(matrix):
+    squared = numpy.dot(matrix, matrix)
+    cubed = numpy.dot(squared, matrix)
+
+    for i in range(1, len(cubed)-1):
+        for j in (i+1, len(cubed[i])-1):
+            if cubed[i, j] > 1 and matrix[i, j] == 0:
+                return True
+
+    return False
+
+
+# A graph follows the rules if it contains no c3, c4, or c6 cycles.
+def does_follow_rules(matrix):
+    # If contains 3 return false
+    if test_triangles(matrix):
+        print "Found trie"
+        return False
+    # If contains 4 return false
+    if test_quads(matrix):
+        print "Found quads"
+        return False
+    # If contains 6 return false
+    if test_hexes(matrix):
+        print "Found hexes"
+        return False
+    return True
 
 
 # Recursively generate edges for a tree graph
@@ -42,7 +77,7 @@ def tree(width, depth, root=1, node_index=1):
     if depth is 0:
         return []
     for i in range(root, root+width):
-        node_index+=1
+        node_index += 1
         node = node_index
 
         layer.append((root, node, 1))
@@ -61,18 +96,9 @@ def treex(width, depth, node_index=1):
 
 
 if __name__ == "__main__":
-    # Generate a tree of width 3 with a depth of 1
-    G = treex(4,2)
+    G = treex(3, 2)
 
-    # Count the triangles and print the edges (there should be 0 triangles)
-    print count_triangles(nx.to_numpy_matrix(G)), "triangles in a basic tree graph:"
-    print G.edges()
-
-    # Add an edge connecting two branches. This creates a triangle.
-    G.add_edge(2,3)
-
-    # Count the triangles and print the edges of the new tree (there should be 1 triangle)
-    print count_triangles(nx.to_numpy_matrix(G)), "triangles in a tree graph where two branches have been connected:"
+    print "Follows rules: ", does_follow_rules(nx.to_numpy_matrix(G))
     print G.edges()
 
     # Draw the graph containing the tree with two connected branches
