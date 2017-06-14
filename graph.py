@@ -27,7 +27,7 @@ def test_triangles(matrix):
     return count_triangles(matrix) > 0
 
 
-# Test for triangles in an adjacency matrix
+# Test for quads in an adjacency matrix
 def test_quads(matrix):
     squared = numpy.dot(matrix, matrix)
 
@@ -69,6 +69,31 @@ def does_follow_rules(matrix):
     return True
 
 
+# A graph follows the rules if it contains no c3, c4, or c6 cycles.
+# This function is far less reader-friendly; however it is equivalent to
+# does_follow_rules() and should run more quickly due to linearly decreased
+# number of loops and matrix operations.
+def does_follow_rules_optimized(matrix):
+    # Square and cube the matrix
+    squared = numpy.dot(matrix, matrix)
+    cubed = numpy.dot(squared, matrix)
+
+    # Test for tries and return false if they exist
+    cubed_diagonal_sum = numpy.sum(numpy.diagonal(cubed))
+    if cubed_diagonal_sum > 0:
+        return False
+
+    # Test for quads and return false if they exist
+    for i in range(1,len(squared)-1):
+        for j in (i+1,len(squared[i])-1):
+            if squared[i, j] > 1:
+                return False
+            if cubed[i, j] > 1 and matrix[i, j] == 0:
+                return False
+
+    return True
+
+
 # Recursively generate edges for a tree graph
 # width describes the number of branches to create at each node. width is n where the desired tree is an n tree
 # depth the number of recursions to perform. Depth levels of tree will be generated from the first node.
@@ -98,7 +123,10 @@ def treex(width, depth, node_index=1):
 if __name__ == "__main__":
     G = treex(3, 2)
 
-    print "Follows rules: ", does_follow_rules(nx.to_numpy_matrix(G))
+    G.add_edge(2, 7)
+
+    print "Follows rules: ", does_follow_rules_optimized(nx.to_numpy_matrix(G))
+    print nx.to_numpy_matrix(G)
     print G.edges()
 
     # Draw the graph containing the tree with two connected branches
