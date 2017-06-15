@@ -3,7 +3,7 @@ from time import time
 import graph
 
 if __name__ == "__main__":
-    G = graph.treex(3, 1)
+    G = graph.treex(3, 8)
 
     G.add_edge(2, 7)
 
