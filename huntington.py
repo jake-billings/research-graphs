@@ -90,7 +90,7 @@ def maxedges(L):
                 exists_greater = True
         if not exists_greater:
             H.append(s)
-    return H[len(H)-1]
+    return H[len(H)-1].number_of_edges()
 
 
 # Returns a filtered version of the list of graphs L in which only a single version of each
@@ -120,7 +120,7 @@ def iso(L):
 #
 # T A list of networkx graphs
 # e A whole number representing the desired number of edges in the returned list L
-def extgraph(T,e):
+def extgraph(T, e):
     L = []
     for x in T:
         if x.number_of_edges() == e:
