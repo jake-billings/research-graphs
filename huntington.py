@@ -60,12 +60,42 @@ def check(G):
         return False
 
 
+# Returns the size of the graph in the set of graphs L with the greatest number of edges
+#
+# "Given a list of graphs this next function returns the largest number of edges of the given
+# graphs. Often in our search we would find suboptimal graphs and needed a way to discard these, this showed which
+# graphs we should keep."
+def maxedges(L):
+    H = []
+    for x in L:
+        s = x.number_of_edges()
+        exists_greater = False
+        for y in H:
+            if y > s:
+                exists_greater = True
+        if not exists_greater:
+            H.append(s)
+    return H[len(H)-1]
+
+
 if __name__ == "__main__":
     # Create a tree.
     G = graph.treex(3, 2)
 
     # This edge creates a 3-cycle. Commenting it out should cause this program to print True
     G.add_edge(2, 7)
+
+    # Create a tree.
+    G2 = graph.treex(4, 2)
+    G3 = graph.treex(1, 4)
+
+    L = [G, G2, G3]
+
+    print G.number_of_edges()
+    print G2.number_of_edges()
+    print G3.number_of_edges()
+
+    print maxedges(L)
 
     # Should print False
     print check(G)
