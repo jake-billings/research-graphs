@@ -11,6 +11,8 @@ import graph
 # Throughout the code it becomes necessary to make sure that the graphs we are working with do not have 3, 4 or
 # 6-cycles. The following three programs do this by looking at various powers of the adjacency matrix.
 # From Huntington's dissertation
+#
+# x A networkx graph
 def c3free(x):
     m = nx.to_numpy_matrix(x)
     squared = numpy.dot(m, m)
@@ -19,7 +21,11 @@ def c3free(x):
     return numpy.sum(diagonal)
 
 
+# Throughout the code it becomes necessary to make sure that the graphs we are working with do not have 3, 4 or
+# 6-cycles. The following three programs do this by looking at various powers of the adjacency matrix.
 # From Huntington's dissertation
+#
+# x A networkx graph
 def c4free(x):
     m = nx.to_numpy_matrix(x)
     m1 = numpy.dot(m, m)
@@ -32,7 +38,11 @@ def c4free(x):
     return 0
 
 
+# Throughout the code it becomes necessary to make sure that the graphs we are working with do not have 3, 4 or
+# 6-cycles. The following three programs do this by looking at various powers of the adjacency matrix.
 # From Huntington's dissertation
+#
+# x A networkx graph
 def c6free(x):
     m = nx.to_numpy_matrix(x)
     squared = numpy.dot(m, m)
@@ -49,6 +59,8 @@ def c6free(x):
 # This function calls the three previous functions and tests to see if any 3, 4 or 6-cycles are present, it returns true
 # if none of these cycles are present and false otherwise.
 # From Huntington's dissertation
+#
+# G A networkx graph
 def check(G):
     s = c3free(G)
     t = c4free(G)
@@ -65,6 +77,9 @@ def check(G):
 # "Given a list of graphs this next function returns the largest number of edges of the given
 # graphs. Often in our search we would find suboptimal graphs and needed a way to discard these, this showed which
 # graphs we should keep."
+# From Huntington's dissertation
+#
+# L A list of networkx graphs
 def maxedges(L):
     H = []
     for x in L:
@@ -76,6 +91,41 @@ def maxedges(L):
         if not exists_greater:
             H.append(s)
     return H[len(H)-1]
+
+
+# Returns a filtered version of the list of graphs L in which only a single version of each
+# isomorphic graph remains.
+#
+# "Often given a list of graphs many would be isomorphic. This function shortens the list by keeping only one isomorphic
+# copy of each graph."
+# From Huntington's dissertation
+#
+# L A list of networkx graphs
+def iso(L):
+    H = []
+    for x in L:
+        found_iso = False
+        for g in H:
+            if nx.is_isomorphic(x, g):
+                found_iso = True
+        if not found_iso:
+            H.append(x)
+    return H
+
+
+# Returns a filtered version of a list of graphs including only graphs of the specified size e
+#
+# "This next function takes a list of graphs and returns a new list of graphs of the given size."
+# From Huntington's dissertation
+#
+# T A list of networkx graphs
+# e A whole number representing the desired number of edges in the returned list L
+def extgraph(T,e):
+    L = []
+    for x in T:
+        if x.number_of_edges() == e:
+            L.append(x)
+    return L
 
 
 if __name__ == "__main__":
@@ -96,6 +146,8 @@ if __name__ == "__main__":
     print G3.number_of_edges()
 
     print maxedges(L)
+
+    print extgraph(L, 13)
 
     # Should print False
     print check(G)
