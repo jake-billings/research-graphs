@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{mathtools}
+\title{Meeting Notes}
+\author{Jake Billings}
+\date{December 19, 2017}
+\begin{document}
+\maketitle
+
+\section{Clarity Check}
+
+\subsection{What's Clear?}
+\begin{enumerate}
+	\item Problem definition
+	\item Some ideas for optimization
+\end{enumerate}
+
+\subsection{What's Unclear?}
+\begin{enumerate}
+	\item How does the current algorithm work?
+	\item How does an ideal algorithm work?
+	\item What exactly do the positions in adjacency matrices tell us?
+	\item How do you check c6 cycles using an adjacency matrix?
+	\item Why do we both checking isomorphism?
+\end{enumerate}
+
+\subsection{Next Steps}
+\begin{enumerate}
+	\item Write a Python class that efficiently checks if cycles have been added when an edge has been added.
+	\item Develop an efficient algorithm to find extremal graphs that do not contain c3, c4, or c6 cycles.
+\end{enumerate}
+
+\section{Problem Definition}
+What is the most number of edges that can be placed in a graph of deg(n) vertices without creating a c3, c4, or c6 cycle? Specifically, can we find the count when n=40? This number is important.
+
+\section{Optimization Ideas}
+How can we make the existing search algorithm faster?
+\subsection{Matrix Operations}
+
+\begin{enumerate}
+	\item Why are matrix operations important?
+	\begin{gather*}
+	trace(adjmat(A))=\frac{\sum deg(E(A))}{2}
+	\end{gather*}
+	The vertices represented by a row in the adjacency matrix are part of a c3 cycle if and only if they are connected and have a neighbor in common.
+	
+	The vertices represented by a row in the adjacency matrix are part of a c4 cycle if and only if they share two neighbors in common.
+	
+	Matrix operations help us find vertices that meet these criteria.
+	\item How can we perform fewer matix operations?
+	\item Can we perform our existing matrix operations more quickly?
+\end{enumerate}
+
+\subsection{Difference-based checking}
+\begin{enumerate}
+	\item The current algorithm essentially "adds an edge then checks."
+	\item The current algorithm recomputes the entire matrix multiple times to check for cycles after adding an edge.
+	\item I have already reduced the number of matrix operations in the check function (see current python files). However, my operation still computes the entire matrix. The algorithm could be optimized to only recompute the parts of matrices that have changed.
+\end{enumerate}
+
+\subsection{Use the Proof}
+Since Dr. Huntington has already proved an upper bound on the diameter of extremal graphs that do not contain c3, c4, or c6 cycles, the search algorithm should terminate if a graph is found that has a diameter that meets this upper bound and does not contain the forbidden cycles.
+
+\subsection{A few more of my ideas}
+\begin{enumerate}
+	\item Can we make it recursive? If the algorithm is recursive, we can cache the results each time.
+	\item We should unit test using the existing results.
+	\item Can we call these Huntington Graphs? Extremal Huntington Graphs?
+	\item Brute force: get a bigger computer
+	\item Can we make this the proof of work (PoW) algorithm for a blockchain? Then we could tap into brilliant engineers who develop FPGAs and ASICs.
+\end{enumerate}
+
+\end{document}
