@@ -1,0 +1,115 @@
+Testing up to a 20x20 for correctness...
+Passed <1 tests for matrix of size 1
+Passed <4 tests for matrix of size 2
+Passed <9 tests for matrix of size 3
+Passed <16 tests for matrix of size 4
+Passed <25 tests for matrix of size 5
+Passed <36 tests for matrix of size 6
+Passed <49 tests for matrix of size 7
+Passed <64 tests for matrix of size 8
+Passed <81 tests for matrix of size 9
+Passed <100 tests for matrix of size 10
+Passed <121 tests for matrix of size 11
+Passed <144 tests for matrix of size 12
+Passed <169 tests for matrix of size 13
+Passed <196 tests for matrix of size 14
+Passed <225 tests for matrix of size 15
+Passed <256 tests for matrix of size 16
+Passed <289 tests for matrix of size 17
+Passed <324 tests for matrix of size 18
+Passed <361 tests for matrix of size 19
+Passed <400 tests for matrix of size 20
+Done testing correctness.
+Testing up to a 50x50 for speed...
+Added <2 edges (size=2) in 1.47819519043e-05 seconds (7.39097595215e-06 seconds per edge)
+Added <6 edges (size=3) in 5.79357147217e-05 seconds (9.65595245361e-06 seconds per edge)
+Added <12 edges (size=4) in 0.000200986862183 seconds (1.67489051819e-05 seconds per edge)
+Added <20 edges (size=5) in 0.000420808792114 seconds (2.10404396057e-05 seconds per edge)
+Added <30 edges (size=6) in 0.000892162322998 seconds (2.97387440999e-05 seconds per edge)
+Added <42 edges (size=7) in 0.00169706344604 seconds (4.04062725249e-05 seconds per edge)
+Added <56 edges (size=8) in 0.00290608406067 seconds (5.18943582262e-05 seconds per edge)
+Added <72 edges (size=9) in 0.0041651725769 seconds (5.78496191237e-05 seconds per edge)
+Added <90 edges (size=10) in 0.00659704208374 seconds (7.33004675971e-05 seconds per edge)
+Added <110 edges (size=11) in 0.0110540390015 seconds (0.00010049126365 seconds per edge)
+Added <132 edges (size=12) in 0.0145220756531 seconds (0.000110015724645 seconds per edge)
+Added <156 edges (size=13) in 0.0198340415955 seconds (0.000127141292279 seconds per edge)
+Added <182 edges (size=14) in 0.0262839794159 seconds (0.000144417469318 seconds per edge)
+Added <210 edges (size=15) in 0.0361261367798 seconds (0.000172029222761 seconds per edge)
+Added <240 edges (size=16) in 0.0447399616241 seconds (0.000186416506767 seconds per edge)
+Added <272 edges (size=17) in 0.0670030117035 seconds (0.000246334601851 seconds per edge)
+Added <306 edges (size=18) in 0.0869419574738 seconds (0.000284124044032 seconds per edge)
+Added <342 edges (size=19) in 0.0965192317963 seconds (0.000282219976012 seconds per edge)
+Added <380 edges (size=20) in 0.116633892059 seconds (0.000306931294893 seconds per edge)
+Added <420 edges (size=21) in 0.131846904755 seconds (0.000313921201797 seconds per edge)
+Added <462 edges (size=22) in 0.173487186432 seconds (0.000375513390545 seconds per edge)
+Added <506 edges (size=23) in 0.200874090195 seconds (0.000396984367974 seconds per edge)
+Added <552 edges (size=24) in 0.235829114914 seconds (0.000427226657453 seconds per edge)
+Added <600 edges (size=25) in 0.279537200928 seconds (0.00046589533488 seconds per edge)
+Added <650 edges (size=26) in 0.326145887375 seconds (0.000501762903654 seconds per edge)
+Added <702 edges (size=27) in 0.380038976669 seconds (0.000541366063631 seconds per edge)
+Added <756 edges (size=28) in 0.498337030411 seconds (0.000659175966152 seconds per edge)
+Added <812 edges (size=29) in 0.492606163025 seconds (0.000606657836238 seconds per edge)
+Added <870 edges (size=30) in 0.564502954483 seconds (0.00064885397067 seconds per edge)
+Added <930 edges (size=31) in 0.653524160385 seconds (0.000702714150952 seconds per edge)
+Added <992 edges (size=32) in 0.742354869843 seconds (0.000748341602664 seconds per edge)
+Added <1056 edges (size=33) in 0.845722913742 seconds (0.000800873971347 seconds per edge)
+Added <1122 edges (size=34) in 0.988858938217 seconds (0.000881335952065 seconds per edge)
+Added <1190 edges (size=35) in 1.13565206528 seconds (0.000954329466619 seconds per edge)
+Added <1260 edges (size=36) in 1.24504494667 seconds (0.000988130910056 seconds per edge)
+Added <1332 edges (size=37) in 1.43148589134 seconds (0.00107468910761 seconds per edge)
+Added <1406 edges (size=38) in 1.77134990692 seconds (0.00125985057391 seconds per edge)
+Added <1482 edges (size=39) in 2.05422711372 seconds (0.00138611816041 seconds per edge)
+Added <1560 edges (size=40) in 2.25218296051 seconds (0.00144370702597 seconds per edge)
+Added <1640 edges (size=41) in 2.43902111053 seconds (0.00148720799423 seconds per edge)
+Added <1722 edges (size=42) in 2.52963495255 seconds (0.00146900984468 seconds per edge)
+Added <1806 edges (size=43) in 2.72720599174 seconds (0.00151008083707 seconds per edge)
+Added <1892 edges (size=44) in 2.89897108078 seconds (0.0015322257298 seconds per edge)
+Added <1980 edges (size=45) in 3.66149115562 seconds (0.00184923795739 seconds per edge)
+Added <2070 edges (size=46) in 3.53294301033 seconds (0.00170673575378 seconds per edge)
+Added <2162 edges (size=47) in 4.21786308289 seconds (0.00195090799393 seconds per edge)
+Added <2256 edges (size=48) in 4.19359207153 seconds (0.00185886173384 seconds per edge)
+Added <2352 edges (size=49) in 5.95196604729 seconds (0.00253059780922 seconds per edge)
+Added <2450 edges (size=50) in 4.83885288239 seconds (0.00197504199281 seconds per edge)
+Done testing speed.
+Testing up to a 41x41 for speed checking cycles...
+Checked <2 graphs (size=2) in 0.000211954116821 seconds (0.000105977058411 seconds per graph)
+Checked <6 graphs (size=3) in 0.000349044799805 seconds (5.81741333008e-05 seconds per graph)
+Checked <12 graphs (size=4) in 0.000890970230103 seconds (7.42475191752e-05 seconds per graph)
+Checked <20 graphs (size=5) in 0.00159883499146 seconds (7.99417495728e-05 seconds per graph)
+Checked <30 graphs (size=6) in 0.00409889221191 seconds (0.000136629740397 seconds per graph)
+Checked <42 graphs (size=7) in 0.00552082061768 seconds (0.000131448109945 seconds per graph)
+Checked <56 graphs (size=8) in 0.00858902931213 seconds (0.000153375523431 seconds per graph)
+Checked <72 graphs (size=9) in 0.0160090923309 seconds (0.000222348504596 seconds per graph)
+Checked <90 graphs (size=10) in 0.0226340293884 seconds (0.000251489215427 seconds per graph)
+Checked <110 graphs (size=11) in 0.029825925827 seconds (0.000271144780246 seconds per graph)
+Checked <132 graphs (size=12) in 0.044529914856 seconds (0.000337347839818 seconds per graph)
+Checked <156 graphs (size=13) in 0.0575540065765 seconds (0.000368935939593 seconds per graph)
+Checked <182 graphs (size=14) in 0.101499795914 seconds (0.000557691186339 seconds per graph)
+Checked <210 graphs (size=15) in 0.106828927994 seconds (0.000508709180923 seconds per graph)
+Checked <240 graphs (size=16) in 0.132317066193 seconds (0.000551321109136 seconds per graph)
+Checked <272 graphs (size=17) in 0.181931018829 seconds (0.000668864039814 seconds per graph)
+Checked <306 graphs (size=18) in 0.211574077606 seconds (0.000691418554269 seconds per graph)
+Checked <342 graphs (size=19) in 0.254185914993 seconds (0.000743233669571 seconds per graph)
+Checked <380 graphs (size=20) in 0.309941053391 seconds (0.000815634351028 seconds per graph)
+Checked <420 graphs (size=21) in 0.370766162872 seconds (0.000882776578267 seconds per graph)
+Checked <462 graphs (size=22) in 0.471553087234 seconds (0.001020677678 seconds per graph)
+Checked <506 graphs (size=23) in 0.608635902405 seconds (0.00120283775179 seconds per graph)
+Checked <552 graphs (size=24) in 0.766571998596 seconds (0.00138871738876 seconds per graph)
+Checked <600 graphs (size=25) in 0.972620010376 seconds (0.00162103335063 seconds per graph)
+Checked <650 graphs (size=26) in 1.11495399475 seconds (0.00171531383808 seconds per graph)
+Checked <702 graphs (size=27) in 1.39840316772 seconds (0.00199202730445 seconds per graph)
+Checked <756 graphs (size=28) in 1.34126400948 seconds (0.00177415874269 seconds per graph)
+Checked <812 graphs (size=29) in 1.5055410862 seconds (0.00185411463817 seconds per graph)
+Checked <870 graphs (size=30) in 1.9869120121 seconds (0.00228380691046 seconds per graph)
+Checked <930 graphs (size=31) in 1.89601016045 seconds (0.00203872060263 seconds per graph)
+Checked <992 graphs (size=32) in 2.28961014748 seconds (0.00230807474544 seconds per graph)
+Checked <1056 graphs (size=33) in 2.32359600067 seconds (0.00220037500064 seconds per graph)
+Checked <1122 graphs (size=34) in 2.74268293381 seconds (0.00244445894279 seconds per graph)
+Checked <1190 graphs (size=35) in 3.07652592659 seconds (0.0025853159047 seconds per graph)
+Checked <1260 graphs (size=36) in 3.27438402176 seconds (0.00259871747759 seconds per graph)
+Checked <1332 graphs (size=37) in 3.60506391525 seconds (0.00270650444088 seconds per graph)
+Checked <1406 graphs (size=38) in 3.93456792831 seconds (0.0027984124668 seconds per graph)
+Checked <1482 graphs (size=39) in 4.64814019203 seconds (0.00313639689071 seconds per graph)
+Checked <1560 graphs (size=40) in 4.78605103493 seconds (0.00306798143265 seconds per graph)
+Checked <1640 graphs (size=41) in 5.33986496925 seconds (0.00325601522515 seconds per graph)
+Done testing speed.
