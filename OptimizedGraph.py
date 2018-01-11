@@ -1,4 +1,5 @@
 from time import time
+import numpy # todo remove and move into test() once we don't need numpy in the class (after we update to the new checking)
 
 # OptimizedGraph
 #
@@ -268,6 +269,43 @@ class OptimizedGraph:
             matrix.append(row)
         return matrix
 
+    # does_follow_rules()
+    #
+    # NOT COMPLETE: This function works; however, it is not fully optimized. It should not be using a numpy cubed
+    #  matrix. More updates are soon to come.
+    #
+    # Returns true if the graph represented by this data structure follows the rules of this research
+    #
+    # A graph follows the rules if it contains no c3, c4, or c6 cycles.
+    # This function is far less reader-friendly; however it is equivalent to
+    # does_follow_rules() and should run more quickly due to linearly decreased
+    # number of loops and matrix operations.
+    #
+    # matrix An adjacency matrix in the form of a 2D array that represents a networkx (or any other) graph
+    # see nx.to_numpy_matrix() to convert networkx graphs to adjacency matrices.
+    #
+    # see check() in Huntington's dissertation
+    # see does_follow_rules() in graph.py for a more-readable but less efficient version
+    def does_follow_rules(self):
+        # todo don't use numpy here
+        cubed = numpy.dot(numpy.matrix(self.get_full_square_adjacency_matrix()), numpy.matrix(self.get_full_adjacency_matrix()))
+
+        # todo don't use numpy here
+        # Test for tries and return false if they exist
+        cubed_diagonal_sum = numpy.sum(numpy.diagonal(cubed))
+        if cubed_diagonal_sum > 0:
+            return False
+
+        # Test for quads and return false if they exist
+        for i in range(1, self.size - 1):
+            for j in (i + 1, self.size - 1):
+                if self.read_square_adjacency_matrix(i, j) > 1:
+                    return False
+                if cubed[i, j] > 1 and self.read_adjacency_matrix(i, j) == 0:
+                    return False
+
+        return True
+
 
 # test()
 #
@@ -275,8 +313,6 @@ class OptimizedGraph:
 #
 # numpy is required
 def test():
-    import numpy
-
     print 'Testing up to a 20x20 for correctness...'
     for size in range(1, 21):
         g = OptimizedGraph(size)
@@ -318,6 +354,27 @@ def test():
         duration_per_edge = duration/edge_count
 
         print 'Added <%s edges (size=%s) in %s seconds (%s seconds per edge)' % (edge_count, size, duration, duration_per_edge)
+    print 'Done testing speed.'
+
+    print 'Testing up to a 41x41 for speed checking cycles...'
+    for size in range(2, 42):
+        g = OptimizedGraph(size)
+
+        graph_count = 0
+        start = time()
+
+        for i in range(0, size):
+            for j in range(0, size):
+                if i != j:
+                    g.add_edge(i, j)
+                    g.does_follow_rules()
+                    graph_count += 1
+        end = time()
+
+        duration = end-start
+        duration_per_graph = duration/graph_count
+
+        print 'Checked <%s graphs (size=%s) in %s seconds (%s seconds per graph)' % (graph_count, size, duration, duration_per_graph)
     print 'Done testing speed.'
 
 
